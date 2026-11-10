@@ -61,11 +61,12 @@ bugtrack/
 
 ### 1. Backend (Flask + SQLite)
 
-```bash
-cd bugtrack/backend
-pip install -r requirements.txt   # Flask, Flask-Cors, PyJWT
-python seed.py                    # creates database + demo users (optional, runs automatically too)
-python app.py                     # API on http://localhost:5000
+```powershell
+Set-Location 'C:\Users\sirik\Downloads\bug-track\bugtrack\backend'
+python -m pip install -r requirements.txt
+$env:SECRET_KEY = python -c 'import secrets; print(secrets.token_urlsafe(48))'
+$env:CORS_ORIGINS = 'http://localhost:5173,http://127.0.0.1:5173'
+python .\app.py
 ```
 
 ### 2. Frontend (React)
@@ -178,3 +179,48 @@ cd ../backend && python app.py  # http://localhost:5000 serves the app
 ---
 
 Made for the college **Software Engineering & System Design** course — simple enough to explain in a viva, complete enough to demonstrate.
+
+## PostgreSQL and cloud deployment
+
+The backend uses SQLite by default for local development. Set `DATABASE_URL` to a PostgreSQL connection URL to select PostgreSQL. Production also requires a random `SECRET_KEY` (at least 32 characters), an explicit `CORS_ORIGINS` allow-list, and a persistent `UPLOAD_DIR`.
+
+### Safe SQLite migration
+
+The migration command is read-only unless `--apply` is supplied. It preserves and verifies primary keys and foreign-key relationships, refuses to write into a non-empty PostgreSQL database, and checks final row counts. It never deletes or changes the SQLite source file.
+
+From PowerShell:
+
+```powershell
+Set-Location 'C:\Users\sirik\Downloads\bug-track\bugtrack\backend'
+python .\database\migrate_sqlite_to_postgres.py --source .\database\bugtrack.db
+```
+
+Review the counts and foreign-key check first. To migrate, set the PostgreSQL URL in that PowerShell process without displaying it, then add `--apply`:
+
+```powershell
+$secureUrl = Read-Host 'PostgreSQL connection URL' -AsSecureString
+$env:DATABASE_URL = [System.Net.NetworkCredential]::new('', $secureUrl).Password
+python .\database\migrate_sqlite_to_postgres.py --source .\database\bugtrack.db --apply
+Remove-Item Env:DATABASE_URL
+Remove-Variable secureUrl
+```
+
+Use the provider's external connection URL for this command if running it from your computer. Do not paste the URL into chat or commit it. The script will refuse to import if any destination table already contains records.
+
+### Render deployment
+
+The root `render.yaml` defines a Flask/Gunicorn API, PostgreSQL, a persistent uploads disk, and a static React site. Connect the GitHub repository to Render and deploy the Blueprint from that file. The API health check is `/health`; Render generates the JWT secret and supplies the database URL. The service and disk plans are paid; review the current prices in Render before creating resources. After the web service is created, confirm its public URL matches the `CORS_ORIGINS` value and update both the frontend `VITE_API_BASE_URL` and mobile API URL if Render assigned a different host.
+
+The Flask production mode intentionally does not seed demo users. Create an initial administrator through a protected provisioning process before opening public registration; public registration creates Reporter accounts only. Password reset is unavailable in production until an email-delivery provider is configured.
+
+The SQLite source currently contains the existing users, including the administrator accounts; migrate that database before first production use to preserve their accounts and passwords. The sample demo accounts are only seeded for local SQLite development.
+
+For the mobile app, provide the same deployed API URL (including `/api`) when starting or building Expo:
+
+```powershell
+Set-Location 'C:\Users\sirik\Downloads\BugTrackMobile\bugtrack-mobile'
+$env:EXPO_PUBLIC_API_BASE_URL = 'https://YOUR-API-HOST/api'
+npx expo start -c
+```
+
+For a production Expo build, configure `EXPO_PUBLIC_API_BASE_URL` in the build environment. The mobile app's `.env` files are ignored by Git.

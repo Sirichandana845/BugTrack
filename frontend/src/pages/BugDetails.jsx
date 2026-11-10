@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { api, fmt, fmtRelative, toast } from '../services/api'
+import { api, apiAssetUrl, fmt, fmtRelative, toast } from '../services/api'
 import { Badge, PriorityBadge, Modal, Spinner } from '../components/ui'
 import Icon from '../components/Icon'
 
@@ -293,7 +293,7 @@ export default function BugDetails({ bugId }) {
                 className="group relative cursor-pointer overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 max-h-72 bg-slate-900 flex items-center justify-center"
               >
                 <img
-                  src={bug.attachment_url}
+                  src={apiAssetUrl(bug.attachment_url)}
                   alt="Bug attachment"
                   className="w-full object-contain max-h-72 transition duration-200 group-hover:scale-102"
                 />
@@ -532,9 +532,9 @@ export default function BugDetails({ bugId }) {
       {/* Lightbox Modal for Attachment */}
       <Modal open={lightboxOpen} onClose={() => setLightboxOpen(false)} title="Screenshot Preview" wide>
         <div className="flex flex-col items-center">
-          <img src={bug.attachment_url} alt="Fullscreen Attachment" className="max-h-[75vh] object-contain rounded-lg shadow-xl" />
+          <img src={apiAssetUrl(bug.attachment_url)} alt="Fullscreen Attachment" className="max-h-[75vh] object-contain rounded-lg shadow-xl" />
           <a
-            href={bug.attachment_url}
+            href={apiAssetUrl(bug.attachment_url)}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-secondary mt-4 text-xs"

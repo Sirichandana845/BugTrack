@@ -1,4 +1,12 @@
 // Enhanced API client for BugTrack (Flask backend at /api)
+export const API_BASE = (import.meta.env.VITE_API_BASE_URL || '/api').replace(/\/+$/, '')
+export const API_ORIGIN = API_BASE.replace(/\/api\/?$/, '')
+
+export function apiAssetUrl(path) {
+  if (!path || /^https?:\/\//i.test(path)) return path
+  return `${API_ORIGIN}${path.startsWith('/') ? path : `/${path}`}`
+}
+
 let token = localStorage.getItem('bt_token') || ''
 let toastHandler = null
 
@@ -17,7 +25,7 @@ export function toast(msg, type = 'success') {
 export async function api(path, { method = 'GET', body } = {}) {
   const headers = { 'Content-Type': 'application/json' }
   if (token) headers.Authorization = 'Bearer ' + token
-  const res = await fetch('/api' + path, {
+  const res = await fetch(API_BASE + path, {
     method,
     headers,
     body: body ? JSON.stringify(body) : undefined
@@ -36,7 +44,7 @@ export async function api(path, { method = 'GET', body } = {}) {
 export async function apiBlob(path) {
   const headers = {}
   if (token) headers.Authorization = 'Bearer ' + token
-  const res = await fetch('/api' + path, { headers })
+  const res = await fetch(API_BASE + path, { headers })
   if (!res.ok) {
     const data = await res.json().catch(() => ({}))
     throw new Error(data.error || 'Failed to download (' + res.status + ')')
