@@ -1,0 +1,5 @@
+# Root requirements.txt — install backend dependencies
+# (frontend deps live in frontend/package.json)
+Flask>=3.0
+Flask-Cors>=4.0
+PyJWT>=2.8

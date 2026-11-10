@@ -1,0 +1,97 @@
+short_desc,description,component,product,severity,priority,status,resolution,assigned_to_name,assigned_to_email,creation_time,steps_to_reproduce,expected_result,actual_result,impact
+Checkout page crashes when applying a discount code,Checkout page crashes when applying a discount code. Applying any promo code on the checkout page throws a 500 error and the order is lost.,Payments,BugTrack Web App,Critical,Critical,closed,FIXED,Arjun Mehta,dev@bugtrack.dev,2026-08-13 16:25:00,"1. Open the page
+2. Perform the reported action
+3. Observe the failure",The system performs the action correctly and shows a success state.,The system fails with an error state and the user cannot complete the action.,High
+User cannot reset password - reset link expires instantly,User cannot reset password - reset link expires instantly. The password reset token is stored without the 30 minute expiry and gets invalidated immediately.,Login / Auth,BugTrack Web App,Critical,Critical,closed,FIXED,Sneha Patel,dev2@bugtrack.dev,2026-07-09 14:52:00,"1. Open the page
+2. Perform the reported action
+3. Observe the failure",The system performs the action correctly and shows a success state.,The system fails with an error state and the user cannot complete the action.,High
+Dashboard charts render blank on Safari 17,Dashboard charts render blank on Safari 17. Line and bar charts on the analytics dashboard show an empty frame on Safari 17.,Dashboard,BugTrack Web App,High,High,testing,,Arjun Mehta,dev@bugtrack.dev,2026-07-15 23:37:00,"1. Open the page
+2. Perform the reported action
+3. Observe the failure",The system performs the action correctly and shows a success state.,The system fails with an error state and the user cannot complete the action.,High
+Duplicate invoices generated when clicking Pay twice,Duplicate invoices generated when clicking Pay twice. Rapid double clicks on the Pay button create two invoices with the same reference.,Payments,BugTrack Web App,High,High,in_progress,,Sneha Patel,dev2@bugtrack.dev,2026-07-11 04:13:00,"1. Open the page
+2. Perform the reported action
+3. Observe the failure",The system performs the action correctly and shows a success state.,The system fails with an error state and the user cannot complete the action.,High
+Search results are not filtered by selected project,Search results are not filtered by selected project. Search ignores the active project filter and returns results from all projects.,Search,BugTrack Web App,Medium,Medium,closed,FIXED,Arjun Mehta,dev@bugtrack.dev,2026-07-07 14:27:00,"1. Open the page
+2. Perform the reported action
+3. Observe the failure",The system performs the action correctly and shows a success state.,The system fails with an error state and the user cannot complete the action.,Medium
+Notification email contains broken image links,Notification email contains broken image links. Email templates reference asset URLs that 404 after the CDN migration.,Notifications,BugTrack Web App,Low,Low,closed,FIXED,Sneha Patel,dev2@bugtrack.dev,2026-08-25 14:15:00,"1. Open the page
+2. Perform the reported action
+3. Observe the failure",The system performs the action correctly and shows a success state.,The system fails with an error state and the user cannot complete the action.,Low
+Report export hangs for datasets over 50k rows,Report export hangs for datasets over 50k rows. CSV export for large result sets times out after 60 seconds.,Reports,BugTrack Web App,High,High,assigned,,Arjun Mehta,dev@bugtrack.dev,2026-07-15 05:27:00,"1. Open the page
+2. Perform the reported action
+3. Observe the failure",The system performs the action correctly and shows a success state.,The system fails with an error state and the user cannot complete the action.,High
+Avatar upload accepts non-image files,Avatar upload accepts non-image files. The profile picture endpoint accepts any file type; a .html file is stored as an avatar.,User Profile,BugTrack Web App,Medium,Medium,reported,,,,2026-07-11 06:07:00,"1. Open the page
+2. Perform the reported action
+3. Observe the failure",The system performs the action correctly and shows a success state.,The system fails with an error state and the user cannot complete the action.,Medium
+Session does not persist after browser refresh,"Session does not persist after browser refresh. The JWT is not stored in a persistent cookie, so refresh logs the user out.",Login / Auth,BugTrack Web App,High,High,in_progress,,Sneha Patel,dev2@bugtrack.dev,2026-08-01 08:40:00,"1. Open the page
+2. Perform the reported action
+3. Observe the failure",The system performs the action correctly and shows a success state.,The system fails with an error state and the user cannot complete the action.,High
+Numbers on report totals are misaligned for 4-digit values,"Numbers on report totals are misaligned for 4-digit values. Table cells overflow for totals above 1,000 in the summary view.",Reports,BugTrack Web App,Low,Low,closed,WONTFIX,,,2026-07-11 06:37:00,"1. Open the page
+2. Perform the reported action
+3. Observe the failure",The system performs the action correctly and shows a success state.,The system fails with an error state and the user cannot complete the action.,Low
+Role change does not refresh sidebar permissions,"Role change does not refresh sidebar permissions. After an admin changes a user's role, the UI keeps showing stale menu items.",Login / Auth,BugTrack Web App,Medium,Medium,testing,,Arjun Mehta,dev@bugtrack.dev,2026-08-22 13:14:00,"1. Open the page
+2. Perform the reported action
+3. Observe the failure",The system performs the action correctly and shows a success state.,The system fails with an error state and the user cannot complete the action.,Medium
+Notifications tab shows unread badge after all read,Notifications tab shows unread badge after all read. The unread counter is not decremented when the user opens the notifications panel.,Notifications,BugTrack Web App,Low,Low,closed,FIXED,Sneha Patel,dev2@bugtrack.dev,2026-07-09 05:54:00,"1. Open the page
+2. Perform the reported action
+3. Observe the failure",The system performs the action correctly and shows a success state.,The system fails with an error state and the user cannot complete the action.,Low
+API Gateway returns 502 for requests above 10 MB payload,API Gateway returns 502 for requests above 10 MB payload. Large JSON uploads fail with 502; a retry fixes it intermittently.,API Gateway,BugTrack Web App,Medium,Medium,reopened,,Arjun Mehta,dev@bugtrack.dev,2026-07-20 21:26:00,"1. Open the page
+2. Perform the reported action
+3. Observe the failure",The system performs the action correctly and shows a success state.,The system fails with an error state and the user cannot complete the action.,Medium
+Edit profile form loses unsaved changes on validation error,Edit profile form loses unsaved changes on validation error. Client-side validation re-renders the form and discards typed values.,User Profile,BugTrack Web App,Medium,Medium,fixed,FIXED,Sneha Patel,dev2@bugtrack.dev,2026-07-22 05:07:00,"1. Open the page
+2. Perform the reported action
+3. Observe the failure",The system performs the action correctly and shows a success state.,The system fails with an error state and the user cannot complete the action.,Medium
+Dark mode toggle resets to light after page reload,Dark mode toggle resets to light after page reload. Theme preference is not persisted to localStorage.,User Profile,BugTrack Web App,Low,Low,reported,,,,2026-08-12 05:52:00,"1. Open the page
+2. Perform the reported action
+3. Observe the failure",The system performs the action correctly and shows a success state.,The system fails with an error state and the user cannot complete the action.,Low
+Bulk delete of bugs does not confirm before deleting,Bulk delete of bugs does not confirm before deleting. No confirmation dialog; accidental bulk deletes are irreversible.,Dashboard,BugTrack Web App,Medium,Medium,assigned,,Arjun Mehta,dev@bugtrack.dev,2026-07-26 15:37:00,"1. Open the page
+2. Perform the reported action
+3. Observe the failure",The system performs the action correctly and shows a success state.,The system fails with an error state and the user cannot complete the action.,Medium
+Login button does not respond on mobile viewport,Login button does not respond on mobile viewport. The submit handler is covered by an overlapping element on small screens.,Login / Auth,BugTrack Web App,High,High,closed,FIXED,Sneha Patel,dev2@bugtrack.dev,2026-07-27 23:06:00,"1. Open the page
+2. Perform the reported action
+3. Observe the failure",The system performs the action correctly and shows a success state.,The system fails with an error state and the user cannot complete the action.,High
+Pagination shows wrong page count for filtered views,Pagination shows wrong page count for filtered views. Total pages are computed from the unfiltered result set.,Search,BugTrack Web App,Medium,Medium,testing,,Arjun Mehta,dev@bugtrack.dev,2026-07-12 06:03:00,"1. Open the page
+2. Perform the reported action
+3. Observe the failure",The system performs the action correctly and shows a success state.,The system fails with an error state and the user cannot complete the action.,Medium
+Invoice PDF missing company logo for new tenants,Invoice PDF missing company logo for new tenants. Logo path resolution fails for tenants created after the branding update.,Payments,BugTrack Web App,Low,Low,closed,FIXED,Sneha Patel,dev2@bugtrack.dev,2026-07-30 03:43:00,"1. Open the page
+2. Perform the reported action
+3. Observe the failure",The system performs the action correctly and shows a success state.,The system fails with an error state and the user cannot complete the action.,Low
+Keyboard shortcut Ctrl+S saves the wrong form,Keyboard shortcut Ctrl+S saves the wrong form. Global shortcut handler binds to the first form on the page instead of the active one.,API Gateway,BugTrack Web App,Medium,Medium,reported,,,,2026-08-26 22:29:00,"1. Open the page
+2. Perform the reported action
+3. Observe the failure",The system performs the action correctly and shows a success state.,The system fails with an error state and the user cannot complete the action.,Medium
+Deprecation warnings flood the logs for every search call,Deprecation warnings flood the logs for every search call. Legacy query builder emits warnings on every invocation.,Search,BugTrack Web App,Low,Low,closed,FIXED,Arjun Mehta,dev@bugtrack.dev,2026-08-30 23:19:00,"1. Open the page
+2. Perform the reported action
+3. Observe the failure",The system performs the action correctly and shows a success state.,The system fails with an error state and the user cannot complete the action.,Low
+Team members list shows deleted users as active,Team members list shows deleted users as active. Soft-deleted users are not filtered out of the team listing endpoint.,User Profile,BugTrack Web App,High,High,in_progress,,Sneha Patel,dev2@bugtrack.dev,2026-08-03 17:44:00,"1. Open the page
+2. Perform the reported action
+3. Observe the failure",The system performs the action correctly and shows a success state.,The system fails with an error state and the user cannot complete the action.,High
+Timezone selector resets to UTC on profile update,Timezone selector resets to UTC on profile update. The timezone field is not included in the update payload.,User Profile,BugTrack Web App,Low,Low,closed,FIXED,Arjun Mehta,dev@bugtrack.dev,2026-08-03 14:36:00,"1. Open the page
+2. Perform the reported action
+3. Observe the failure",The system performs the action correctly and shows a success state.,The system fails with an error state and the user cannot complete the action.,Low
+Webhook deliveries fail silently for invalid signatures,Webhook deliveries fail silently for invalid signatures. Signature verification errors are swallowed; no retry or alert is triggered.,API Gateway,BugTrack Web App,High,High,reported,,,,2026-08-11 04:31:00,"1. Open the page
+2. Perform the reported action
+3. Observe the failure",The system performs the action correctly and shows a success state.,The system fails with an error state and the user cannot complete the action.,High
+Chart tooltips overlap the header on small screens,Chart tooltips overlap the header on small screens. Tooltip positioning is not clamped to the chart container.,Dashboard,BugTrack Web App,Low,Low,closed,FIXED,Sneha Patel,dev2@bugtrack.dev,2026-08-16 11:28:00,"1. Open the page
+2. Perform the reported action
+3. Observe the failure",The system performs the action correctly and shows a success state.,The system fails with an error state and the user cannot complete the action.,Low
+Export to Excel truncates long description cells,Export to Excel truncates long description cells. Cells are limited to 255 characters in the XLSX export.,Reports,BugTrack Web App,Medium,Medium,reported,,,,2026-08-09 07:04:00,"1. Open the page
+2. Perform the reported action
+3. Observe the failure",The system performs the action correctly and shows a success state.,The system fails with an error state and the user cannot complete the action.,Medium
+OAuth callback does not handle cancelled login,OAuth callback does not handle cancelled login. Cancelling the OAuth flow leaves the app stuck on a loading spinner.,Login / Auth,BugTrack Web App,Medium,Medium,testing,,Arjun Mehta,dev@bugtrack.dev,2026-07-19 04:26:00,"1. Open the page
+2. Perform the reported action
+3. Observe the failure",The system performs the action correctly and shows a success state.,The system fails with an error state and the user cannot complete the action.,Medium
+Rate limiter blocks legitimate API keys during peak hours,Rate limiter blocks legitimate API keys during peak hours. Burst traffic from a single client key trips the global limiter.,API Gateway,BugTrack Web App,High,High,assigned,,Sneha Patel,dev2@bugtrack.dev,2026-07-24 22:09:00,"1. Open the page
+2. Perform the reported action
+3. Observe the failure",The system performs the action correctly and shows a success state.,The system fails with an error state and the user cannot complete the action.,High
+Search autocomplete suggests deleted modules,Search autocomplete suggests deleted modules. Index is not refreshed when modules are archived.,Search,BugTrack Web App,Medium,Medium,reopened,,Arjun Mehta,dev@bugtrack.dev,2026-09-04 01:02:00,"1. Open the page
+2. Perform the reported action
+3. Observe the failure",The system performs the action correctly and shows a success state.,The system fails with an error state and the user cannot complete the action.,Medium
+Notification preferences cannot be saved with none selected,"Notification preferences cannot be saved with none selected. The preferences form requires at least one channel, but the schema allows zero.",Notifications,BugTrack Web App,Low,Low,closed,WONTFIX,,,2026-07-13 05:36:00,"1. Open the page
+2. Perform the reported action
+3. Observe the failure",The system performs the action correctly and shows a success state.,The system fails with an error state and the user cannot complete the action.,Low
+Signup page leaks whether an email is already registered,Signup page leaks whether an email is already registered. The signup response differs for existing vs new emails.,Login / Auth,BugTrack Web App,Medium,Medium,reported,,,,2026-08-12 22:44:00,"1. Open the page
+2. Perform the reported action
+3. Observe the failure",The system performs the action correctly and shows a success state.,The system fails with an error state and the user cannot complete the action.,Medium
+Invoice amount displayed with wrong currency symbol,Invoice amount displayed with wrong currency symbol. Multi-currency tenants see the tenant currency symbol with the wrong locale.,Payments,BugTrack Web App,High,High,testing,,Sneha Patel,dev2@bugtrack.dev,2026-08-17 07:31:00,"1. Open the page
+2. Perform the reported action
+3. Observe the failure",The system performs the action correctly and shows a success state.,The system fails with an error state and the user cannot complete the action.,High
